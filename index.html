@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚨 ATENÇÃO: Seu celular está lento!</title>
+    <title>🚨 ATENÇÃO: Sua localização está sendo rastreada!</title>
     <style>
         * {
             margin: 0;
@@ -94,22 +94,22 @@
             text-align: center;
         }
         
-        .phone-icon {
+        .location-icon {
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, #2c3e50, #34495e);
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
             margin: 0 auto 20px;
-            border-radius: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
             color: white;
             position: relative;
-            animation: phone-scan 2s ease-in-out infinite;
+            animation: pulse-location 2s ease-in-out infinite;
         }
         
-        @keyframes phone-scan {
+        @keyframes pulse-location {
             0%, 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
             50% { box-shadow: 0 0 0 20px rgba(231, 76, 60, 0); }
         }
@@ -193,16 +193,16 @@
             color: white;
         }
         
-        .performance-bars {
+        .privacy-bars {
             padding: 20px;
             background: #ecf0f1;
         }
         
-        .performance-item {
+        .privacy-item {
             margin-bottom: 15px;
         }
         
-        .performance-label {
+        .privacy-label {
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
@@ -210,14 +210,14 @@
             color: #2c3e50;
         }
         
-        .performance-bar {
+        .privacy-bar {
             height: 8px;
             background: #bdc3c7;
             border-radius: 4px;
             overflow: hidden;
         }
         
-        .performance-fill {
+        .privacy-fill {
             height: 100%;
             border-radius: 4px;
             transition: width 2s ease;
@@ -401,117 +401,213 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        .nearby-people {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .nearby-title {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .people-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .person-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .person-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .person-info {
+            flex: 1;
+        }
+        
+        .person-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .person-distance {
+            font-size: 12px;
+            color: #27ae60;
+        }
+        
+        .person-status {
+            width: 8px;
+            height: 8px;
+            background: #27ae60;
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
     </style>
 </head>
 <body>
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-content">
             <div class="spinner"></div>
-            <h3>Escaneando seu dispositivo...</h3>
-            <p>Analisando problemas de desempenho</p>
+            <h3>Detectando sua localização...</h3>
+            <p>Verificando quem pode ver você</p>
         </div>
     </div>
 
     <div class="container">
         <div class="alert-header">
-            <h1>🚨 ATENÇÃO CRÍTICA 🚨</h1>
-            <p>Seu celular tem problemas graves de desempenho!</p>
+            <h1>🚨 ALERTA DE PRIVACIDADE 🚨</h1>
+            <p>Sua localização está sendo rastreada por apps desconhecidos!</p>
         </div>
         
         <div class="device-info">
-            <span id="deviceInfo">Dispositivo: <strong>Android</strong> | Localização: <strong>São Paulo, SP</strong></span>
+            <span id="deviceInfo">Localização: <strong>São Paulo, SP</strong> | Status: <strong style="color: #e74c3c;">EXPOSTO</strong></span>
         </div>
         
         <div class="countdown-warning">
-            ⏰ Resolva em <span id="countdown">04:37</span> minutos ou o dano será permanente!
+            ⏰ Proteja sua privacidade em <span id="countdown">04:37</span> minutos antes que seja tarde!
         </div>
         
         <div class="scan-section">
-            <div class="phone-icon">📱</div>
-            <div class="scan-text">Escaneamento concluído!</div>
+            <div class="location-icon">📍</div>
+            <div class="scan-text">Análise de privacidade concluída!</div>
             
             <div class="problems-found">
-                <h3>🚨 ENCONTRADOS 8 PROBLEMAS CRÍTICOS! 🚨</h3>
-                <p>Seu celular está em risco sério!</p>
+                <h3>🚨 ENCONTRADOS 7 RISCOS DE PRIVACIDADE! 🚨</h3>
+                <p>Sua localização está sendo compartilhada sem permissão!</p>
             </div>
         </div>
         
         <div class="problems-list">
             <div class="problem-item">
-                <div class="problem-icon">🗑️</div>
+                <div class="problem-icon">📱</div>
                 <div class="problem-text">
-                    <div class="problem-title">Arquivos lixo</div>
-                    <div class="problem-desc">2,84 GB de arquivos desnecessários estão deixando o sistema lento</div>
+                    <div class="problem-title">Apps rastreando localização</div>
+                    <div class="problem-desc">12 aplicativos têm acesso à sua localização em tempo real</div>
                 </div>
                 <div class="problem-severity critical">CRÍTICO</div>
             </div>
             
             <div class="problem-item">
-                <div class="problem-icon">📦</div>
+                <div class="problem-icon">👥</div>
                 <div class="problem-text">
-                    <div class="problem-title">Cache sobrecarregado</div>
-                    <div class="problem-desc">1,23 GB de cache acumulado precisa ser limpo</div>
+                    <div class="problem-title">Dados compartilhados</div>
+                    <div class="problem-desc">Sua localização está sendo vendida para terceiros</div>
                 </div>
                 <div class="problem-severity critical">CRÍTICO</div>
             </div>
             
             <div class="problem-item">
-                <div class="problem-icon">🔋</div>
+                <div class="problem-icon">🕵️</div>
                 <div class="problem-text">
-                    <div class="problem-title">Apps gastando bateria</div>
-                    <div class="problem-desc">14 aplicativos em segundo plano estão consumindo sua bateria</div>
+                    <div class="problem-title">Rastreamento em segundo plano</div>
+                    <div class="problem-desc">Apps continuam rastreando mesmo quando fechados</div>
                 </div>
                 <div class="problem-severity warning">MÉDIO</div>
             </div>
             
             <div class="problem-item">
-                <div class="problem-icon">🐌</div>
+                <div class="problem-icon">🌐</div>
                 <div class="problem-text">
-                    <div class="problem-title">Memória sobrecarregada</div>
-                    <div class="problem-desc">91% da memória RAM está sendo utilizada</div>
+                    <div class="problem-title">Histórico de localização</div>
+                    <div class="problem-desc">Seus movimentos dos últimos 6 meses estão sendo armazenados</div>
                 </div>
                 <div class="problem-severity critical">CRÍTICO</div>
             </div>
         </div>
         
-        <div class="performance-bars">
-            <div class="performance-item">
-                <div class="performance-label">
-                    <span>Velocidade do sistema</span>
-                    <span style="color: #e74c3c;">19%</span>
+        <div class="nearby-people">
+            <div class="nearby-title">👥 Pessoas próximas que podem te ver:</div>
+            <div class="people-list">
+                <div class="person-item">
+                    <div class="person-avatar">👨</div>
+                    <div class="person-info">
+                        <div class="person-name">Carlos M.</div>
+                        <div class="person-distance">📍 230m de você</div>
+                    </div>
+                    <div class="person-status"></div>
                 </div>
-                <div class="performance-bar">
-                    <div class="performance-fill critical-fill" style="width: 19%;"></div>
+                
+                <div class="person-item">
+                    <div class="person-avatar">👩</div>
+                    <div class="person-info">
+                        <div class="person-name">Ana Silva</div>
+                        <div class="person-distance">📍 450m de você</div>
+                    </div>
+                    <div class="person-status"></div>
+                </div>
+                
+                <div class="person-item">
+                    <div class="person-avatar">👨</div>
+                    <div class="person-info">
+                        <div class="person-name">João Santos</div>
+                        <div class="person-distance">📍 680m de você</div>
+                    </div>
+                    <div class="person-status"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="privacy-bars">
+            <div class="privacy-item">
+                <div class="privacy-label">
+                    <span>Nível de privacidade</span>
+                    <span style="color: #e74c3c;">15%</span>
+                </div>
+                <div class="privacy-bar">
+                    <div class="privacy-fill critical-fill" style="width: 15%;"></div>
                 </div>
             </div>
             
-            <div class="performance-item">
-                <div class="performance-label">
-                    <span>Espaço disponível</span>
-                    <span style="color: #f39c12;">37%</span>
+            <div class="privacy-item">
+                <div class="privacy-label">
+                    <span>Proteção de localização</span>
+                    <span style="color: #e74c3c;">8%</span>
                 </div>
-                <div class="performance-bar">
-                    <div class="performance-fill warning-fill" style="width: 37%;"></div>
-                </div>
-            </div>
-            
-            <div class="performance-item">
-                <div class="performance-label">
-                    <span>Segurança</span>
-                    <span style="color: #e74c3c;">12%</span>
-                </div>
-                <div class="performance-bar">
-                    <div class="performance-fill critical-fill" style="width: 12%;"></div>
+                <div class="privacy-bar">
+                    <div class="privacy-fill critical-fill" style="width: 8%;"></div>
                 </div>
             </div>
             
-            <div class="performance-item">
-                <div class="performance-label">
-                    <span>Bateria otimizada</span>
-                    <span style="color: #f39c12;">28%</span>
+            <div class="privacy-item">
+                <div class="privacy-label">
+                    <span>Segurança de dados</span>
+                    <span style="color: #f39c12;">32%</span>
                 </div>
-                <div class="performance-bar">
-                    <div class="performance-fill warning-fill" style="width: 28%;"></div>
+                <div class="privacy-bar">
+                    <div class="privacy-fill warning-fill" style="width: 32%;"></div>
+                </div>
+            </div>
+            
+            <div class="privacy-item">
+                <div class="privacy-label">
+                    <span>Controle de acesso</span>
+                    <span style="color: #e74c3c;">21%</span>
+                </div>
+                <div class="privacy-bar">
+                    <div class="privacy-fill critical-fill" style="width: 21%;"></div>
                 </div>
             </div>
         </div>
@@ -519,30 +615,30 @@
         <div class="solution-section">
             <div class="solution-title">✅ SOLUÇÃO ENCONTRADA!</div>
             <div class="solution-text">
-                O melhor aplicativo de limpeza e otimização pode resolver todos esses problemas em segundos!
+                O aplicativo Tô Aqui pode proteger sua privacidade e te mostrar quem realmente está por perto de forma segura!
             </div>
             
             <div class="app-preview">
-                <div class="app-icon">🧹</div>
-                <div class="app-name">Limpeza Total Pro</div>
+                <div class="app-icon">📍</div>
+                <div class="app-name">Tô Aqui - Localização Segura</div>
                 <div class="app-features">
-                    ✅ Limpeza profunda • ✅ Otimização de bateria<br>
-                    ✅ Aceleração do sistema • ✅ Proteção de privacidade
+                    ✅ Controle total da sua privacidade • ✅ Localização protegida<br>
+                    ✅ Encontre pessoas próximas • ✅ Bloqueio de rastreamento
                 </div>
             </div>
             
             <a href="#" class="cta-button" onclick="redirectToOffer()">
-                🚀 RESOLVER AGORA - GRÁTIS! 🚀
+                🔒 PROTEGER AGORA - GRÁTIS! 🔒
             </a>
             
             <div class="trust-badges">
                 <div class="trust-badge">
                     <span class="trust-icon">⭐</span>
-                    4,9/5 estrelas
+                    4,8/5 estrelas
                 </div>
                 <div class="trust-badge">
                     <span class="trust-icon">📥</span>
-                    80M+ downloads
+                    5M+ downloads
                 </div>
                 <div class="trust-badge">
                     <span class="trust-icon">🔒</span>
@@ -557,16 +653,16 @@
         
         <div class="testimonials">
             <div class="testimonial">
-                "Meu celular estava super lento, mas esse app resolveu tudo! Agora está voando!"
-                <div class="testimonial-author">- Ana Silva, São Paulo</div>
+                "Finalmente posso controlar quem vê minha localização! Me sinto muito mais segura agora."
+                <div class="testimonial-author">- Marina Costa, Brasília</div>
             </div>
             <div class="testimonial">
-                "Incrível! Limpou 3GB de lixo que eu nem sabia que tinha. Recomendo!"
+                "App incrível! Descobri que 8 apps estavam me rastreando sem eu saber. Agora estou protegido!"
                 <div class="testimonial-author">- Carlos Santos, Rio de Janeiro</div>
             </div>
             <div class="testimonial">
-                "Minha bateria durava só 2 horas, agora dura o dia todo. Muito bom!"
-                <div class="testimonial-author">- Marina Costa, Brasília</div>
+                "Conheci pessoas legais da minha região de forma segura. Recomendo muito!"
+                <div class="testimonial-author">- Ana Silva, São Paulo</div>
             </div>
         </div>
     </div>
@@ -608,60 +704,94 @@
         window.onload = function() {
             showScanAnimation();
             
-            // Animate performance bars
+            // Animate privacy bars
             setTimeout(() => {
-                const fills = document.querySelectorAll('.performance-fill');
+                const fills = document.querySelectorAll('.privacy-fill');
                 fills.forEach(fill => {
                     fill.style.width = fill.style.width;
                 });
             }, 3500);
         };
         
-        // Redirect function
+        // Redirect function - UPDATED FOR TÔ AQUI
         function redirectToOffer() {
-            // Sostituisci con i tuoi link delle offer brasiliane
-            // Per ID 21974 - BR Top Lingo
-            // Per ID 21973 - BR Tô Aqui
-            window.open('YOUR_BRAZIL_OFFER_LINK_HERE', '_blank');
+            // Sostituisci con il link di tracking Bemob per BR Tô Aqui (ID 21973)
+            window.open('YOUR_BEMOB_TOAQUI_TRACKING_URL_HERE', '_blank');
         }
         
-        // Exit intent with Brazilian Portuguese
+        // Exit intent with Brazilian Portuguese for location/privacy
         let exitIntentShown = false;
         document.addEventListener('mouseleave', function(e) {
             if (e.clientY < 0 && !exitIntentShown) {
                 exitIntentShown = true;
-                if (confirm('🚨 ESPERE! Seu celular pode ser danificado permanentemente! Quer resolver agora?')) {
+                if (confirm('🚨 ESPERE! Sua localização continua sendo rastreada! Quer se proteger agora?')) {
                     redirectToOffer();
                 }
             }
         });
         
-        // Brazilian cities simulation
+        // Brazilian cities simulation for privacy context
         const brazilianCities = ['São Paulo, SP', 'Rio de Janeiro, RJ', 'Brasília, DF', 'Salvador, BA', 'Fortaleza, CE', 'Belo Horizonte, MG'];
         function updateLocation() {
             const randomCity = brazilianCities[Math.floor(Math.random() * brazilianCities.length)];
-            document.getElementById('deviceInfo').innerHTML = `Dispositivo: <strong>Android</strong> | Localização: <strong>${randomCity}</strong>`;
+            document.getElementById('deviceInfo').innerHTML = `Localização: <strong>${randomCity}</strong> | Status: <strong style="color: #e74c3c;">EXPOSTO</strong>`;
         }
         
         // Update location every 10 seconds
         setInterval(updateLocation, 10000);
         
-        // Brazilian specific notifications
-        function showBrazilianNotification() {
+        // Simulate nearby people updates
+        function updateNearbyPeople() {
+            const names = ['Carlos M.', 'Ana Silva', 'João Santos', 'Maria Lima', 'Pedro Costa', 'Julia Santos'];
+            const distances = ['230m', '450m', '680m', '890m', '1.2km', '1.5km'];
+            
+            // Randomly update distances to create movement effect
+            const personItems = document.querySelectorAll('.person-distance');
+            personItems.forEach((item, index) => {
+                const randomDistance = distances[Math.floor(Math.random() * distances.length)];
+                item.textContent = `📍 ${randomDistance} de você`;
+            });
+        }
+        
+        // Update nearby people every 8 seconds
+        setInterval(updateNearbyPeople, 8000);
+        
+        // Brazilian specific privacy notifications
+        function showPrivacyNotification() {
             const notifications = [
-                '🚨 Sistema sobrecarregado detectado!',
-                '⚠️ Memória crítica - limpeza necessária!',
-                '🔋 Bateria sendo drenada por apps ocultos!',
-                '🐌 Velocidade do sistema: CRÍTICA!'
+                '🚨 Nova tentativa de rastreamento detectada!',
+                '⚠️ App desconhecido acessou sua localização!',
+                '📍 Sua posição foi compartilhada 3 vezes na última hora!',
+                '🕵️ Rastreamento em segundo plano detectado!'
             ];
             
             const notification = notifications[Math.floor(Math.random() * notifications.length)];
-            console.log('Brazilian notification:', notification);
+            console.log('Privacy notification:', notification);
         }
         
-        setTimeout(showBrazilianNotification, 5000);
-        setTimeout(showBrazilianNotification, 12000);
-        setTimeout(showBrazilianNotification, 20000);
+        setTimeout(showPrivacyNotification, 5000);
+        setTimeout(showPrivacyNotification, 12000);
+        setTimeout(showPrivacyNotification, 20000);
+        
+        // Get URL parameters for tracking
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // Store tracking parameters for Bemob
+        const trackingParams = {
+            utm_source: getUrlParameter('utm_source'),
+            utm_campaign: getUrlParameter('utm_campaign'), 
+            utm_content: getUrlParameter('utm_content'),
+            click_id: getUrlParameter('click_id'),
+            zone: getUrlParameter('zone'),
+            creative: getUrlParameter('creative')
+        };
+        
+        console.log('Tracking params:', trackingParams);
     </script>
 </body>
 </html>
